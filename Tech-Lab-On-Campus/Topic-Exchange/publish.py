@@ -25,6 +25,7 @@ def main(ticker: str, price: float, sector: str) -> None:
     #                       WRITE CODE HERE!!!
     #
 
+    routingKey = "{}.{}.{}".format(ticker, price, sector)
 
     producer = mqProducer(routing_key=routingKey,exchange_name="Tech Lab Topic Exchange")
 
@@ -34,10 +35,18 @@ def main(ticker: str, price: float, sector: str) -> None:
     #                       WRITE CODE HERE!!!
     #
     
+    message = "{} price is now ${}".format(ticker, price)
     
     producer.publishOrder(message)
 
 if __name__ == "__main__":
+
+    if len(sys.argv) == 0:
+        sys.exit()
+    
+    ticker = sys.argv[0]
+    price = sys.argv[1]
+    sector = sys.argv[2]
 
     # Implement Logic to read the ticker, price and sector string from the command line and save them - Step 1
     #
