@@ -40,17 +40,15 @@ def main(ticker: str, price: float, sector: str) -> None:
     producer.publishOrder(message)
 
 if __name__ == "__main__":
-
-    if len(sys.argv) == 0:
-        sys.exit()
-    
-    ticker = sys.argv[0]
-    price = sys.argv[1]
-    sector = sys.argv[2]
-
     # Implement Logic to read the ticker, price and sector string from the command line and save them - Step 1
     #
     #                       WRITE CODE HERE!!!
     #
+    if len(sys.argv) == 0:
+        sys.exit()
+    
+    ticker = sys.argv[1]
+    price = sys.argv[2]
+    sector = sys.argv[3]
 
     sys.exit(main(ticker,price,sector))
