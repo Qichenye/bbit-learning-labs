@@ -13,9 +13,9 @@ class mqProducer(mqProducerInterface):
 
     def setupRMQConnection(self) -> None:
         # Set-up Connection to RabbitMQ service
-        connection = pika.BlockingConnection(
-        pika.ConnectionParameters(host='localhost'))
-        self.channel = connection.channel()
+        self.connection = pika.BlockingConnection(
+            pika.ConnectionParameters(host='localhost'))
+        self.channel = self.connection.channel()
 
         # Create the exchange if not already present
         self.channel.exchange_declare(exchange=self.exchange_name, exchange_type="topic")
